@@ -1,0 +1,47 @@
+
+*{
+    font-family: 'Lucida Sans';
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(135deg, rgb(50, 100, 242), rgb(50, 200, 242));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+svg {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.bar{
+    fill: rgb(50, 100, 242);
+}
+
+.bar:hover {
+    fill: black;
+}
+
+g {
+    color: black;
+}
+
+#tooltip {
+    margin: 10px;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+#title {
+    font-size: 40px;
+    font-weight: bolder;
+}
