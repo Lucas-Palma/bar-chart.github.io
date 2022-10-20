@@ -13,9 +13,39 @@ let width = 800;
 let height = 600;
 let padding = 40
 
-let svg = d3.select('svg')
+//section and heading
+let section = d3.select('body').append('section');
+
+let heading = section.append('heading');
+  heading
+        .append('h1')
+        .attr('id', 'title')
+        .text('United States GDP');
+    heading
+        .append('h3')
+        .attr('id', 'description')
+        .html('1947 - 2015');
+
+//create tip
+let tip = d3
+    .tip()
+    .attr('class', 'd3-tip')
+    .attr('id', 'tooltip')
+    .html(d => {
+        return d;
+    })
+    .direction('e')
+    .offset([0, 5]);
+
+//create svg
+let svg = section
+    .append('svg')
+    .attr('width', width + padding * 2)
+    .attr('height', height + padding * 2)
+    .call(tip)
 
 let drawCanvas = () => {
+    
     svg.attr('width', width)
     svg.attr('height', height)
 }
@@ -49,13 +79,6 @@ let generateScales = () => {
 
 let drawBars = () => {
 
-    let tooltip = d3.select('body')
-                    .append('div')
-                    .attr('id', 'tooltip')
-                    .style('visibility', 'hidden')
-                    .style('width', 'auto')
-                    .style('height', 'auto')
-
     svg.selectAll('rect')
         .data(values)
         .enter()
@@ -77,18 +100,20 @@ let drawBars = () => {
         .attr('y', (item) => {
             return (height - padding) - heightScale(item[1])
         })
-        .on('mouseover', (event, item) => {
-            tooltip.transition()
-                .style('visibility', 'visible')
-
-            tooltip.text("DATE: " + item[0] + " GDP: " + item[1])
-
-            document.querySelector('#tooltip').setAttribute('data-date', item[0])
-        })
-        .on('mouseout', (event, item) => {
-            tooltip.transition()
-                .style('visibility', 'hidden')
-        })
+        .on('mouseover', function(event, d) {
+            let date = new Date(d.year, d.month);
+            let str =
+                `<span class='date'> 
+                    DATE: ${d[0]} 
+                </span>
+                <br />
+                <span class='gdp'>
+                   GDP: ${d[1]} 
+                </span>`
+            tip.attr('data-date', d[0]);
+            tip.show(str, this);
+          })
+          .on('mouseout', tip.hide);
 }
 
 let generateAxes = () => {

@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Ubuntu+Mono&display=swap');
+
+*{
+  font-family: 'Fira Mono', monospace;
+}
+
+html {
+    height: 100%;
+    background: linear-gradient(90deg, rgb(141, 245, 99), rgb(68, 250, 129));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+}
+
+svg {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#title {
+    font-size: 30px;
+}
+
+.bar{
+    fill: rgb(0, 109, 15)
+}
+
+.bar:hover {
+    fill: black;
+}
+
+g {
+    color: black;
+}
+
+body .d3-tip {
+    background-color: rgba(0, 0, 0, 0.706);
+    border-radius: 2px;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding: 0.5em;
+  }
+
