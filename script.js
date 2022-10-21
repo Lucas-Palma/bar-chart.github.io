@@ -101,7 +101,6 @@ let drawBars = () => {
             return (height - padding) - heightScale(item[1])
         })
         .on('mouseover', function(event, d) {
-            let date = new Date(d.year, d.month);
             let str =
                 `<span class='date'> 
                     DATE: ${d[0]} 
